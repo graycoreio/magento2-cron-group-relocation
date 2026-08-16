@@ -22,6 +22,9 @@ use PHPUnit\Framework\TestCase;
  */
 class RelocateCronJobGroupPluginTest extends TestCase
 {
+    /**
+     * @var ObjectManagerInterface
+     */
     private ObjectManagerInterface $objectManager;
 
     protected function setUp(): void
