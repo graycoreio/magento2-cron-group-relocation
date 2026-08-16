@@ -23,9 +23,13 @@ use PHPUnit\Framework\TestCase;
 class RelocateCronJobGroupPluginTest extends TestCase
 {
     /**
+     * Deliberately untyped: on 2.4.7 the integration framework's
+     * Workaround\Cleanup\TestCaseProperties nulls every test-case property at
+     * endTestSuite, which is a TypeError against a non-nullable typed property.
+     *
      * @var ObjectManagerInterface
      */
-    private ObjectManagerInterface $objectManager;
+    private $objectManager;
 
     protected function setUp(): void
     {
