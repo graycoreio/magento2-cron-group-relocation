@@ -1,0 +1,64 @@
+{
+    "name": "graycore/magento2-cron-group-relocation",
+    "description": "A Magento 2 module that moves cron jobs into a different cron group than the one their declaring module put them in",
+    "type": "magento2-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Damien Retzinger",
+            "email": "damienwebdev@gmail.com"
+        }
+    ],
+    "scripts": {
+        "test": "phpunit --bootstrap vendor/autoload.php test",
+        "unit-test": "vendor/bin/phpunit ./Test/Unit",
+        "lint": "phpcs . --standard=Magento2 --ignore='vendor/*,node_modules/*'",
+        "post-install-cmd": [
+            "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/,../../magento/php-compatibility-fork/)"
+        ],
+        "post-update-cmd": [
+            "([ $COMPOSER_DEV_MODE -eq 0 ] || vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/,../../magento/php-compatibility-fork/)"
+        ]
+    },
+    "archive": {
+        "exclude": [
+            "/docs",
+            "/Test",
+            "README.md"
+        ]
+    },
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "Graycore\\CronGroupRelocation\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    },
+    "require": {
+        "php": ">=8.1",
+        "magento/framework": "^102.0 || ^103.0",
+        "magento/module-cron": "^100.4"
+    },
+    "require-dev": {
+        "magento/magento-coding-standard": "^40",
+        "magento/php-compatibility-fork": "^0.1.0",
+        "phpunit/phpunit": "^12.0",
+        "squizlabs/php_codesniffer": "^3.4"
+    },
+    "repositories": {
+        "0": {
+            "type": "composer",
+            "url": "https://mirror.mage-os.org/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "magento/composer-dependency-version-audit-plugin": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

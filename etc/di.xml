@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--
+        Registers the relocation plugin with an empty mapping. This module ships
+        no relocations of its own — consuming modules add them by supplying the
+        `relocations` argument, and must sequence themselves after this one:
+
+        <type name="Graycore\CronGroupRelocation\Plugin\RelocateCronJobGroupPlugin">
+            <arguments>
+                <argument name="relocations" xsi:type="array">
+                    <item name="some_job_code" xsi:type="string">some_group</item>
+                </argument>
+            </arguments>
+        </type>
+    -->
+    <type name="Magento\Cron\Model\Config">
+        <plugin name="graycore_cron_group_relocation"
+                type="Graycore\CronGroupRelocation\Plugin\RelocateCronJobGroupPlugin"
+                sortOrder="10"/>
+    </type>
+</config>
